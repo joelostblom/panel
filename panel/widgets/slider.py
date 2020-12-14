@@ -82,7 +82,7 @@ class ContinuousSlider(_SliderBase):
     __abstract = True
 
     def __init__(self, **params):
-        if params.get('value') is None:
+        if 'value' not in params:
             params['value'] = params.get('start', self.start)
         super().__init__(**params)
 
@@ -127,7 +127,7 @@ class FloatSlider(ContinuousSlider):
 
     end = param.Number(default=1.0)
 
-    value = param.Number(default=0.0)
+    value = param.Number(default=0.0, allow_None=True)
 
     value_throttled = param.Number(default=None, constant=True)
 
@@ -138,7 +138,7 @@ class FloatSlider(ContinuousSlider):
 
 class IntSlider(ContinuousSlider):
 
-    value = param.Integer(default=0)
+    value = param.Integer(default=0, allow_None=True)
 
     value_throttled = param.Integer(default=None, constant=True)
 
