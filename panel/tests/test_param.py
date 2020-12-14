@@ -1289,3 +1289,12 @@ def test_sorted_func():
     assert input1.name=="cba"
     assert input2.name=="acb"
     assert input3.name=="bac"
+
+def test_number_input():
+    class Test(param.Parameterized) :
+        number = param.Number(default=0, allow_None=True)
+        none = param.Number(default=None, allow_None=True)
+
+    test_widget = Param(Test())
+    assert test_widget[1].value == 0
+    assert test_widget[2].value is None
