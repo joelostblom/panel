@@ -399,7 +399,7 @@ class Param(PaneBase):
             kw['visible'] = not p_obj.constant
 
         value = getattr(self.object, p_name)
-        if value is not None:
+        if value is not None or getattr(p_obj, 'allow_None', False):
             kw['value'] = value
 
         # Update kwargs
